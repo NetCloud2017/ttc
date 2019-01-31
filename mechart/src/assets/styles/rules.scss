@@ -1,0 +1,150 @@
+
+.pc-page-content {
+  //min-height: 600px;
+  padding: 8px 16px 24px;
+}
+
+.pc-page-content * {
+  font-size: 14px ;
+}
+
+
+
+
+.pc-page-content .el-input__inner, .pc-page-content .el-button, .pc-page-content .el-textarea__inner {
+  border-radius: 0 !important;
+}
+
+//两列时 input 宽度
+
+.pc-input-col2 {
+
+  width: 252px !important;
+}
+
+.pc-input-col3 {
+
+  width: 352px !important;
+}
+
+.pc-input3-col3 {
+  width: 220px !important;
+}
+
+.pc-input3-col5 {
+  width: 150px !important;
+  box-sizing: border-box;
+}
+.pc-input3-col6 {
+  width: 200px !important;
+  box-sizing: border-box;
+}
+
+.pc-dialog-input {
+  width:193px;
+  display: inline-block;
+}
+
+//title 加分割线
+
+.pc-page-header {
+  margin: 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c2c2c2;
+  margin-top:0;
+}
+.pc-page-header p {
+  font-size: 14px !important;
+  color: #383838;
+}
+
+// 分页 在分页外包个div 应用在div上
+.pc-page-content .pc-pagination-panel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+//覆盖disabled 禁止样式
+.el-input.is-disabled .el-input__inner {
+  cursor: default;
+}
+
+.el-select .el-input.is-disabled .el-input__inner {
+  cursor: default;
+}
+
+.pc-page-content .pc-router-link {
+  color: #20a0ff;
+}
+
+.pc-page-content .pc-router-link:hover {
+  color: #4db3ff;
+}
+
+.pc-page-content .pc-textBtn:after {
+  content: ' ';
+  margin-left: 10px;
+  color: #999;
+}
+
+.pc-page-content .pc-input-readonly-color input {
+  background-color: #eef1f6 !important;
+  border-color: #d1dbe5;
+  color: #bbb !important;
+}
+
+.pc-page-content .pc-input-readonly-color textarea {
+  background-color: #eef1f6 !important;
+  border-color: #d1dbe5;
+  color: #bbb !important;
+}
+
+.pc-page-content .breadcrumb-con {
+  margin-top: 7px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.pc-page-content .pc-addBtn-panel {
+  margin-top: -4px;
+  padding-bottom: 16px;
+}
+
+.pc-page-content .pc-textBtn-danger {
+  color: #ff0000;
+}
+
+.pc-page-content .pc-textBtn-danger:hover {
+  color: #ff6d6d;
+}
+
+.pc-adaption {
+  max-width: 1150px;
+}
+// 表头加粗 默认是500 但是500不生效 记录一下日后解决
+.el-table th div, .el-table th>.cell {
+  font-weight: 700;
+}
+
+.el-icon-zoom-in {
+  font-size: 20px;
+}
+.pc-tree {
+  margin: 0 30px 0 15px;
+  .el-input {
+    margin-bottom: 10px;
+  }
+}
+.operation-panel{
+  margin: 20px 0;
+  .el-button+.el-button {
+    margin-left: 1px;
+  }
+  button:first-child{
+    border-radius: 16.5px 0 0 16.5px !important;
+  }
+  button:last-child{
+    border-radius: 0 16.5px 16.5px 0 !important;
+  }
+}

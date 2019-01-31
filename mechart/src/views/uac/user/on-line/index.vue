@@ -1,0 +1,98 @@
+<template>
+  <div>
+    <el-form :inline="true" ref="filterFrom" :model="filterModel">
+      <div class="pc-page-header">
+        <el-form-item label="" prop="loginName">
+          <el-input size="small" clearable v-model="filterModel.loginName" placeholder="登录名"></el-input>
+        </el-form-item>
+        <el-form-item label="" prop="userName">
+          <el-input size="small" clearable v-model="filterModel.userName" placeholder="用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="">
+          <el-button type="primary" size="small" @click="queryDataFn('filterFrom')">筛选</el-button>
+          <el-button size="small" @click="resetFromFn('filterFrom')">重置</el-button>
+        </el-form-item>
+      </div>
+    </el-form>
+    <div>
+      <el-table :data="tableData" stripe>
+        <el-table-column type="index" label="序号" width="65px"></el-table-column>
+        <el-table-column prop="loginName" label="登录名" min-width="120">
+          <template slot-scope="scope">
+            <router-link class="pc-router-link" :to="{ name:'userView', query: {'loginName': scope.row.loginName}}">
+              {{scope.row.loginName}}
+            </router-link>
+          </template>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" min-width="80">
+          <template slot-scope="scope">
+            {{scope.row.status | statusToChinese}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="userName" label="姓名" min-width="120"></el-table-column>
+        <el-table-column prop="groupName" label="组织名称" min-width="120"></el-table-column>
+        <el-table-column prop="loginIp" label="登录IP" min-width="120"></el-table-column>
+        <el-table-column prop="loginLocation" label="登录地点" min-width="120"></el-table-column>
+        <el-table-column prop="createdTime" label="登录时间" min-width="150"></el-table-column>
+        <el-table-column prop="os" label="操作系统" min-width="150"></el-table-column>
+        <el-table-column prop="browser" label="浏览器" min-width="150"></el-table-column>
+        <el-table-column fixed="right" prop="expiresIn" label="过期时间(秒)" min-width="150"></el-table-column>
+      </el-table>
+    </div>
+    <div class="pc-pagination-panel">
+      <pc-pagination ref="pcPagination" :url="pageUrl.queryPageUrl" :queryData="filterModel" @on-query="queryCallBackFn" />
+    </div>
+  </div>
+</template>
+<script>
+  import PcPagination from 'components/form/pagination';
+  export default {
+    data () {
+      return {
+        userId: '',
+        pageUrl: {
+          queryPageUrl: '/uac/token/queryListWithPage'
+        },
+        filterModel: {
+          status: 0,
+          loginName: '',
+          userName: ''
+        },
+        tableData: []
+      };
+    },
+    created () {
+    },
+    components: {
+      PcPagination
+    },
+    filters: {
+      statusToChinese (val) {
+        let state = '';
+        switch (val) {
+          case 0: {
+            state = '在线';
+            break;
+          }
+          case 10: {
+            state = '刷新Token';
+            break;
+          }
+          case 20: {
+            state = '离线';
+            break;
+          }
+        }
+        return state;
+      }
+    },
+    methods: {
+      queryCallBackFn (res) {
+        this.tableData = res.result.list;
+      },
+      queryDataFn () {
+        this.$refs.pcPagination.queryListWithPageFn();
+      }
+    }
+  };
+</script>
